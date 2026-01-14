@@ -1,5 +1,7 @@
+'use server'
 import { UserType } from "@/app/_components/type";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 
 //set session cookies
@@ -21,4 +23,13 @@ export const getSession = async()=>{
 }
 
 //delete session cookie
+export const deleteSession = async () =>{
+    const cookieStore = await cookies()
+    cookieStore.delete("session")
+}
 
+//handel logout Actions
+export const logoutAction = async ()=>{
+    await deleteSession()
+    redirect("/login")
+}

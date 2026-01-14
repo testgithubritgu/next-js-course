@@ -8,7 +8,7 @@ import { setSession } from "@/lib/session";
 const API_URL = "http://localhost:3001";
 
 export const loginAction = async (formData: FormData) => {
-  console.log(formData);
+
   try {
     const response = await axios.get(
       `${API_URL}/users?email=${formData.get("email")}&password=${formData.get(

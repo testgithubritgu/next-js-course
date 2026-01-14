@@ -1,9 +1,15 @@
-import React from 'react'
+'use client'
+
+import { Button } from '@/components/ui/button'
+import { logoutAction } from '@/lib/session'
 
 export default function LogoutButton() {
+  const handelLogout = async () =>{
+    await logoutAction()
+  }
   return (
-    <button>
+    <Button onClick={() => handelLogout()}>
       Logout
-    </button>
+    </Button>
   )
 }
