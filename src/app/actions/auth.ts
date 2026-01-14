@@ -3,6 +3,7 @@
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { UserType } from "../_components/type";
+import { setSession } from "@/lib/session";
 
 const API_URL = "http://localhost:3001";
 
@@ -18,7 +19,7 @@ export const loginAction = async (formData: FormData) => {
     const user:UserType = response.data[0];
     if (!user) throw new Error("Invalid Credentials");
     //set user in the cookies
-    
+    await setSession({name:user.name,email:user.email,id:user.id})
   } catch (error) {
     throw new Error("Failed to login");
   }
